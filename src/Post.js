@@ -4,13 +4,10 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import { IoBookmarkOutline } from 'react-icons/io5'
 
 export default function Post(props) {
-    function curtiu() {
-        let kkrf = document.querySelector(".kkrf");
-        console.log(kkrf);
-        kkrf.classList.toggle('.hidden');
+    function aumenta() {
         setCurt(curt + 1);
+        curtiu();
     }
-
     let [curt, setCurt] = React.useState(64);
     return (
         <div data-test="post" className="post">
@@ -31,7 +28,7 @@ export default function Post(props) {
             <div className="fundo">
               <div className="acoes">
                 <div>
-                  <AiOutlineHeart onClick={curtiu} data-test="like-post" className='icon-post kkr' />
+                  <AiOutlineHeart onClick={aumenta} data-test="like-post" className='icon-post kkr' />
                   <AiFillHeart className='heart-fill hidden kkrf'/>
                   <ion-icon name="chatbubble-outline"></ion-icon>
                   <ion-icon name="paper-plane-outline"></ion-icon>
@@ -51,4 +48,23 @@ export default function Post(props) {
           </div>
     )
 }
+
+function curtiu(descurtiu, curto) {
+    console.log(descurtiu);
+    let aparece = true
+    let kkrf = document.querySelector('.kkrf');
+    console.log(kkrf.classList);
+    kkrf.classList.forEach(x => {
+        if (x === 'hidden') {
+            aparece = false}})
+
+    if (aparece) {
+        kkrf.classList.add('hidden')
+        //descurtiu(curto -1);
+    }
+    kkrf.classList.toggle('hidden');
+
+}
+
+
 
